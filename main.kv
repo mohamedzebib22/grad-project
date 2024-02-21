@@ -1,0 +1,919 @@
+<RootScreen>:
+    
+    Show_lab:
+        name:'show_lab'
+    Lab:
+        name:'laboratory'
+    
+    StartScreen:
+        name:'main'
+    Choose_entery:
+        name:'choose_entry'
+    Choose_signup:
+        name:'choose_signup'
+
+    Signup_admin:
+        name:'signup_admin'
+    Signup_user:
+        name:'signup_user'
+    Login_user:
+        name:'login_user'
+    Login_admin:
+        name:'loin_admin'
+    
+    
+    
+
+<StartScreen>:
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+        Image:
+            source:"img/logo.png"
+            size_hint: .8,.8
+            pos_hint: {'center_x':.5 , 'center_y':.65 }
+        
+        MDLabel:
+            text:"Hello !"
+            font_name: 'BPoppins'
+            font_size: "23sp"
+            pos_hint:{"center_y":.38}
+            halign: 'center'
+            color: rgba(34,34,34,255)
+            
+        MDLabel:
+            text:"This application is an analysis laboratory that makes it easy for the user to find the nearest laboratory to him"
+            font_name: 'MPoppins'
+            font_size: "14sp"
+            size_hint_x:.75
+            pos_hint:{"center_x":.5 ,"center_y":.3}
+            halign: 'center'
+            color: rgba(127,127,127,255)
+
+        MDRaisedButton:
+            text:'LOGIN'
+            size_hint:.66,.06
+            pos_hint:{"center_x":.5,"center_y":.18}
+            md_bg_color: "blue"
+            
+            font_name:'BPoppins'
+            on_release: 
+                root.manager.transition.direction="left"
+                root.manager.current="laboratory"
+            canvas.before:
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius: [5]
+
+
+        MDRaisedButton:
+            text:'SIGNUP'
+            size_hint:.66,.06
+            pos_hint:{"center_x":.5,"center_y":.09}
+            md_bg_color: "white"
+            font_name:'BPoppins'
+            theme_text_color: "Custom"
+            text_color: "blue"
+            on_release: 
+                root.manager.transition.direction="left"
+                root.manager.current="choose_signup"
+
+            canvas.before:
+                Color:
+                    rgb: rgba(52,0,231,255)
+                Line:
+                    width: 1.2
+                    rounded_rectangle: self.x ,self.y ,self.width ,self.height , 5, 5, 5, 5, 100
+
+<Choose_entery>:
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="main"
+        Image:
+            source:"img/login2.png"
+            size_hint: .8,.8
+            pos_hint: {'center_x':.5 , 'center_y':.80 }
+
+
+        MDLabel:
+            text:"Choose the ability to log in"
+            font_name: 'BPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_y":.62}
+            halign: 'center'
+            color: rgba(34,34,34,255)
+
+
+        MDRaisedButton:
+            text: "LOGIN AS USER"
+            md_bg_color: "blue"
+            font_name:'BPoppins'
+            font_size: "15sp"
+            pos_hint: {'center_x':.5,'center_y':.40}
+            size_hint_x: .7 
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="login_user"
+
+        MDRaisedButton:
+            text: "LOGIN AS ADMIN"
+            md_bg_color: "blue"
+            font_name:'MPoppins'
+            font_size: "15sp"
+            pos_hint: {'center_x':.5,'center_y':.20}
+            size_hint_x: .7 
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="login_admin"
+
+<Login_user>:
+
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="choose_entry"
+        MDLabel:
+            text:"Welcome !"
+            font_name: 'BPoppins'
+            font_size: "26sp"
+            pos_hint:{"center_x":.6,"center_y":.85}
+            
+            color: rgba(0,0,59,255)
+
+
+        MDLabel:
+            text:"Sign in to continue"
+            font_name: 'MPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_x":.6 ,"center_y":.79}
+            color: rgba(135,133,193,255)
+
+        MDGridLayout:
+            pos_hint: {'center_x': .5, 'center_y': .20}
+            spacing: '30dp'
+            cols: 1
+            rows: 2
+
+            MDTextField:
+                id: email_field
+                mode: "round"
+                size_hint: None, None
+                width: 390
+                hint_text: "Email"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter Email"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline: False
+                validator: "email"
+                icon_right: "email"
+
+            MDTextField:
+                id: password_field
+                size_hint: None, None
+                width: 390
+                mode: "round"
+                hint_text: "Password"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter Password"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline: False
+                password: True
+
+        MDRaisedButton:
+            text: "L O G I N"
+            md_bg_color: "blue"
+            font_name:'BPoppins'
+            font_size: "20sp"
+            pos_hint: {'center_x':.5,'center_y':.34}
+            size_hint_x: .7
+            on_release: app.login(email_field.text, password_field.text)
+        MDTextButton:
+            text: 'Forgot Password?'
+            pos_hint: {'center_x':.5 , 'center_y':.28}
+            md_bg_color: "white"
+            font_name:'BPoppins'
+            font_size: "15sp"
+
+        MDLabel:
+            text:'or'
+
+            pos_hint: { 'center_y':.22}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .01, 0, 1, 1
+            font_name:'BPoppins'
+            font_size: "15sp"
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.3 , 'center_y':.218}
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.7 , 'center_y':.218}
+        
+        MDLabel:
+            text:'Social Media Login'
+            font_name: "BPoppins"
+            font_size: "13sp"
+            halign:'center'
+            pos_hint: { 'center_y':.16}
+            color: rgba(135,133,193,255)
+
+
+
+        MDGridLayout:
+            cols: 3
+            size_hint: .48, .07
+            pos_hint: {'center_x': .5, 'center_y': .1}
+
+            MDIconButton:
+                icon: 'img/google.png'  # قم بتحديد الرمز المناسب لزر Google
+                on_release: app.login_with_oauth('google')
+
+            MDIconButton:
+                icon: 'img/facebook.png'  # قم بتحديد الرمز المناسب لزر Facebook
+                on_release: app.login_with_oauth('facebook')
+
+            MDIconButton:
+                icon: 'img/apple.png'  # قم بتحديد الرمز المناسب لزر Apple
+                on_release: app.login_with_oauth('apple')
+        
+        MDLabel:
+            text:' Dont not hava an account ?'
+            font_name: "BPoppins"
+            font_size:'11sp'
+            pos_hint: {'center_x':.68 , 'center_y':.04}
+            color: rgba(135,133,193,255)
+
+        MDTextButton:
+            text:' Sign up'
+            font_name: "BPoppins"
+            font_size:'13sp'
+            pos_hint: {'center_x':.84 , 'center_y':.04}
+            color: .01,0,1,1
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="signup_user"
+
+<Login_admin>:
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="choose_entry"
+        MDLabel:
+            text:"Welcome !"
+            font_name: 'BPoppins'
+            font_size: "26sp"
+            pos_hint:{"center_x":.6,"center_y":.85}
+            
+            color: rgba(0,0,59,255)
+
+
+        MDLabel:
+            text:"Sign in to continue"
+            font_name: 'MPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_x":.6 ,"center_y":.79}
+            color: rgba(135,133,193,255)
+
+        MDGridLayout:
+            pos_hint:{'center_x':.5,'center_y':.20} 
+            spacing: '30dp'
+            cols:1
+            rows:2
+             
+            MDTextField:
+                id: email_field
+                mode: "round"
+                size_hint:None,None
+                width:390
+                hint_text: "Email"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter Email"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline:False
+                validator: "email"
+                icon_right: "email"
+            
+            
+
+            MDTextField:
+                id: password_field
+                size_hint: None, None
+                width: 390
+                mode: "round"
+                hint_text: "Password"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter Password"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline: False
+                password: True
+
+            
+
+
+        MDRaisedButton:
+            text: "L O G I N"
+            md_bg_color: "blue"
+            font_name:'BPoppins'
+            font_size: "20sp"
+            pos_hint: {'center_x':.5,'center_y':.34}
+            size_hint_x: .7
+            on_release: app.login(email_field.text, password_field.text)
+        MDTextButton:
+            text: 'Forgot Password?'
+            pos_hint: {'center_x':.5 , 'center_y':.28}
+            md_bg_color: "white"
+            font_name:'BPoppins'
+            font_size: "15sp"
+
+        MDLabel:
+            text:'or'
+
+            pos_hint: { 'center_y':.22}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .01, 0, 1, 1
+            font_name:'BPoppins'
+            font_size: "15sp"
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.3 , 'center_y':.218}
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.7 , 'center_y':.218}
+        
+        MDLabel:
+            text:'Social Media Login'
+            font_name: "BPoppins"
+            font_size: "13sp"
+            halign:'center'
+            pos_hint: { 'center_y':.16}
+            color: rgba(135,133,193,255)
+
+
+
+        
+        MDLabel:
+            text:' Dont not hava an account ?'
+            font_name: "BPoppins"
+            font_size:'11sp'
+            pos_hint: {'center_x':.68 , 'center_y':.04}
+            color: rgba(135,133,193,255)
+
+        MDTextButton:
+            text:' Sign up'
+            font_name: "BPoppins"
+            font_size:'13sp'
+            pos_hint: {'center_x':.84 , 'center_y':.04}
+            color: .01,0,1,1
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="signup_admin"
+
+
+<Signup_user>:
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="choose_signup"
+        MDLabel:
+            text:"H i !"
+            font_name: 'BPoppins'
+            font_size: "26sp"
+            pos_hint:{"center_x":.6,"center_y":.89}
+            color: rgba(0,0,59,255)
+
+        MDLabel:
+            text:"Create a new account"
+            font_name: 'MPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_x":.6 ,"center_y":.83}
+            color: rgba(135,133,193,255)
+
+
+        MDGridLayout:
+            pos_hint:{'center_y':.30}
+            cols:1
+            rows:5
+            
+            padding: 10
+            spacing: 9
+
+            MDTextField:
+                id: user_name
+                hint_text: "User_name"
+                mode: "rectangle"
+                helper_text: " Enter username"
+                multiline: False
+                
+            MDTextField:
+                id: email_field
+                hint_text: "Email"
+                mode: "rectangle"
+                helper_text: "Enter Email"
+                multiline: False
+            
+            MDTextField:
+                id: password_field
+                hint_text: "Password"
+                mode: "rectangle"
+                helper_text: "Enter password"
+                multiline: False
+                password:True
+                
+
+            MDTextField:
+                id: date
+                hint_text: "Date"
+                mode: "rectangle"
+                helper_text: "Enter date"
+                multiline: False
+
+            MDTextField:
+                id: phone
+                hint_text: "Phone"
+                mode: "rectangle"
+                helper_text: "Enter phone number"
+                multiline: False
+
+        MDRaisedButton:
+            text: "S I G N U P"
+            md_bg_color: "blue"
+            font_name:'BPoppins'
+            font_size: "13sp"
+            pos_hint: {'center_x':.5,'center_y':.17}
+            size_hint_x: .7 
+            on_release: app.signup_user(email_field.text,password_field.text,user_name.text,phone.text,date.text)
+
+
+
+        MDLabel:
+            text:'or'
+
+            pos_hint: { 'center_y':.12}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .01, 0, 1, 1
+            font_name:'BPoppins'
+            font_size: "15sp"
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.3 , 'center_y':.12}
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.7 , 'center_y':.12}
+        
+        MDLabel:
+            text:'Social Media Login'
+            font_name: "BPoppins"
+            font_size: "13sp"
+            halign:'center'
+            pos_hint: { 'center_y':.09}
+            color: rgba(135,133,193,255)
+
+
+
+        MDGridLayout:
+            cols:3
+            size_hint: .48 ,.03
+            pos_hint: {'center_x':.5,'center_y':.06}
+
+            Image:
+                source:'img/google.png'
+            
+            Image:
+                source:'img/facebook.png'
+
+            Image:
+                source:'img/apple.png'
+        
+        MDLabel:
+            text:' Already hava an account ?'
+            font_name: "BPoppins"
+            font_size:'11sp'
+            pos_hint: {'center_x':.68 , 'center_y':.02}
+            color: rgba(135,133,193,255)
+
+
+        MDTextButton:
+            text:' Sign in'
+            font_name: "BPoppins"
+            font_size:'12sp'
+            pos_hint: {'center_x':.75 , 'center_y':.02}
+            color: .01,0,1,1
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="choose_signup"
+
+<Signup_admin>:
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="choose_signup"
+        MDLabel:
+            text:"H i !"
+            font_name: 'BPoppins'
+            font_size: "26sp"
+            pos_hint:{"center_x":.6,"center_y":.89}
+            color: rgba(0,0,59,255)
+
+        MDLabel:
+            text:"Create a new account"
+            font_name: 'MPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_x":.6 ,"center_y":.83}
+            color: rgba(135,133,193,255)
+
+
+        MDGridLayout:
+            pos_hint:{'center_y':.30}
+            cols:1
+            rows:5
+            
+            padding: 10
+            spacing: 9
+
+            MDTextField:
+                id: laboratory_name
+                hint_text: "Laboratory name"
+                mode: "rectangle"
+                helper_text: " Enter Laboratory name"
+                multiline: False
+                
+            MDTextField:
+                id: email_admin
+                hint_text: "Email"
+                mode: "rectangle"
+                helper_text: "Enter Email"
+                multiline: False
+            
+            MDTextField:
+                id: password_admin
+                hint_text: "Password"
+                mode: "rectangle"
+                helper_text: "Enter password"
+                multiline: False
+                password:True
+                
+
+            MDTextField:
+                id: address_admin
+                hint_text: "The address"
+                mode: "rectangle"
+                helper_text: "Enter address"
+                multiline: False
+
+            MDTextField:
+                id: phone_admin
+                hint_text: "Phone"
+                mode: "rectangle"
+                helper_text: "Enter phone number"
+                multiline: False
+
+        MDRaisedButton:
+            text: "S I G N U P"
+            md_bg_color: "blue"
+            font_name:'BPoppins'
+            font_size: "13sp"
+            pos_hint: {'center_x':.5,'center_y':.17}
+            size_hint_x: .7 
+            on_release:app.signup_admin()
+
+        MDLabel:
+            text:'or'
+
+            pos_hint: { 'center_y':.12}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .01, 0, 1, 1
+            font_name:'BPoppins'
+            font_size: "15sp"
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.3 , 'center_y':.12}
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178,178,255)
+            size_hint: .3,.002
+            pos_hint: {'center_x':.7 , 'center_y':.12}
+        
+        MDLabel:
+            text:'Social Media Login'
+            font_name: "BPoppins"
+            font_size: "13sp"
+            halign:'center'
+            pos_hint: { 'center_y':.09}
+            color: rgba(135,133,193,255)
+
+
+
+        
+        
+        MDLabel:
+            text:' Already hava an account ?'
+            font_name: "BPoppins"
+            font_size:'11sp'
+            pos_hint: {'center_x':.68 , 'center_y':.02}
+            color: rgba(135,133,193,255)
+
+
+        MDTextButton:
+            text:' sign in'
+            font_name: "BPoppins"
+            font_size:'12sp'
+            pos_hint: {'center_x':.75 , 'center_y':.02}
+            color: .01,0,1,1
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="choose_entry"
+
+<Choose_signup>:
+    MDFloatLayout:
+        md_bg_color:1,1,1,1
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="main"
+        Image:
+            source:"img/login2.png"
+            size_hint: .8,.8
+            pos_hint: {'center_x':.5 , 'center_y':.80 }
+
+
+        MDLabel:
+            text:"Choose the ability to log in"
+            font_name: 'BPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_y":.62}
+            halign: 'center'
+            color: rgba(34,34,34,255)
+
+
+        MDRaisedButton:
+            text: "SIGNUP AS USER"
+            md_bg_color: "blue"
+            font_name:'BPoppins'
+            font_size: "15sp"
+            pos_hint: {'center_x':.5,'center_y':.40}
+            size_hint_x: .7 
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="signup_user"
+
+        MDRaisedButton:
+            text: "SIGNUP AS ADMIN"
+            md_bg_color: "blue"
+            font_name:'MPoppins'
+            font_size: "15sp"
+            pos_hint: {'center_x':.5,'center_y':.20}
+            size_hint_x: .7 
+            on_release:
+                root.manager.transition.direction="left"
+                root.manager.current="signup_admin"
+
+
+
+<Lab>:
+    name:"laboratory"
+    MDFloatLayout:
+        md_bg_color:.8,.6,.2,.8
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_y':.95}
+            user_font_size:'30sp'
+            theme_text_color: "Custom"
+            text_color: rgba(26,24,58,255)
+            on_release:
+                root.manager.transition.d4="right"
+                root.manager.current="main"
+
+        MDLabel:
+            text:"Welcome !"
+            font_name: 'BPoppins'
+            font_size: "26sp"
+            pos_hint:{"center_x":.8,"center_y":.93}
+            
+            color: rgba(0,0,59,255)
+
+
+        MDLabel:
+            text:"Add Data To The Laboratory"
+            font_name: 'MPoppins'
+            font_size: "18sp"
+            pos_hint:{"center_x":.6 ,"center_y":.87}
+            color: rgba(135,133,193,255)
+
+
+        
+
+        MDCard:
+            pos_hint:{'center_x':.5,'center_y':.40} 
+            orientation: "vertical"
+            size_hint: None, None
+            size: "300dp", "492dp"
+            
+            padding: 5
+            spacing: 7
+            radius: [40,]
+            md_bg_color:"teal"
+            
+            MDTextField:
+                id: lab_name
+                mode: "rectangle"
+                size_hint:None,None
+                width:300
+                hint_text: "labName"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter lab Name"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline:False
+                pos_hint: {'center_x': .5}
+            MDTextField:
+                id: lab_address
+                mode: "rectangle"
+                size_hint:None,None
+                width:300
+                hint_text: "labAddress"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter lab address"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline:False
+                pos_hint: {'center_x': .5}
+
+            MDTextField:
+                id: phone_lab
+                mode: "rectangle"
+                size_hint:None,None
+                width:300
+                hint_text: "phoneNumber"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter phone"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline:False
+                pos_hint: {'center_x': .5}
+                
+                
+            MDTextField:
+                id: analysis_name
+                mode: "rectangle"
+                size_hint:None,None
+                width:300
+                hint_text: "analysisName"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "Enter analysis Name"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline:False
+                pos_hint: {'center_x': .5}
+
+            MDTextField:
+                id: lab_price
+                mode: "rectangle"
+                size_hint:None,None
+                width:300
+                hint_text: "Price"
+                required: True
+                helper_text_mode: "persistent"
+                helper_text: "price"
+                font_size: "20sp"
+                cursor_width: "2sp"
+                multiline:False
+                pos_hint: {'center_x': .5}
+
+            Image:
+                id:img
+                source: ""
+                size_hint:None,None
+                size: 150,80
+                pos_hint: {'center_x': .5}
+
+            MDRaisedButton:
+                text:"Upload"
+                md_bg_color:'green'
+                on_release:root.file_chooser()
+                pos_hint: {'center_x': .5}
+   
+
+            MDRaisedButton:
+                text:'submit'
+                md_bg_color:'red'
+                on_press: root.storage_data()        
+                pos_hint: {'center_x': .5}
+
+
+<Show_Lab>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Products"
+
+        BoxLayout:
+            id: box
+            size_hint_y: None
+            height: dp(56)
+            padding: dp(10)
+            spacing: dp(10)
+
+            MDTextField:
+                id: search_field
+                size_hint:None,None
+                width:200
+                height:500
+                hint_text: "Enter product name..."
+                mode: "rectangle"
+                on_text_validate: root.search_product()
+
+            MDIconButton:
+                icon: "magnify"
+                on_release: root.search_product()
+            MDIconButton:
+                icon:'reload'
+                on_release: root.show_data()
+
+        ScrollView:
+            GridLayout:
+                id: products_grid
+                cols: 1
+                spacing: '10dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: self.minimum_height
+
+                # العناصر ستضاف هنا داخل الـ GridLayout
+                MDRaisedButton:
+                    id: show_data_button
+                    text:'Show Products'
+                    on_release: root.show_data()
